@@ -127,19 +127,7 @@ Plug 'joereynolds/gtags-scope'
 Plug 'dyng/ctrlsf.vim'
 " :FS [pattern]
 
-"-----------------------------------------------------------------------------------------------------------------------------
-" NEW STUFF
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vimlab/split-term.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'drewtempelmeyer/palenight.vim'
-let g:split_term_default_shell = "zsh"
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-"-----------------------------------------------------------------------------------------------------------------------------
+
 " search with :Ack [options] {pattern] [{directories}]
 Plug 'mileszs/ack.vim'
 
@@ -226,23 +214,7 @@ Plug 'kracejic/themeinabox.vim'
 " All of your Plugins must be added before the following line
 call plug#end()
 
-"set clipboard+=unnamedplus
-"nnoremap <C-y> "+y
-"vnoremap <C-y> "+y
-"nnoremap <C-p> "+gP
-"vnoremap <C-p> "+gP
 
-" " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-
-" " Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
 " Use of the filetype plugins, auto completion and indentation support
 " filetype plugin indent on    " required
 
@@ -588,10 +560,7 @@ let g:clang_format#style_options = {
 augroup ClangFormatSettings
     autocmd!
     " if you install vim-operator-user
-	" ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    "autocmd FileType c,cpp,objc,java,javascript map <buffer><Leader>c <Plug>(operator-clang-format)
-    autocmd FileType c,cpp,objc,java map <buffer><Leader>c <Plug>(operator-clang-format)
-	" ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    autocmd FileType c,cpp,objc,java,javascript map <buffer><Leader>c <Plug>(operator-clang-format)
     autocmd FileType c,cpp syntax clear cppSTLconstant
 
     autocmd FileType vimwiki nmap <leader>tts :TaskWikiMod +sprint<CR>
@@ -602,18 +571,13 @@ augroup ClangFormatSettings
     " au BufNewFile,BufRead,BufAdd *.md set cole=0
 augroup END
 
-"------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-"let g:indentLine_char = '|'
-"let g:indentLine_char = '▏'
-"let g:indentLine_char = '⎸'
-let g:indentLine_char = '│'
-"let g:indentLine_setColors = 0
-"let g:indentLine_setConceal = 0
-let g:indentLine_concealcursor = 'inc'
-let g:indentLine_conceallevel = 2
-"let g:indentLine_fileTypeExclude = ['markdown']
-"let g:indentLine_fileType = ["yaml","yml","json"]
-"------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+let g:indentLine_char = '¦'
+" let g:indentLine_setConceal = 0
+" let g:indentLine_enabled = 0
+" let g:indentLine_concealcursor = 'inc'
+" let g:indentLine_conceallevel = 0
+" let g:indentLine_fileTypeExclude = ['markdown']
+let g:indentLine_fileType = ["yaml","yml","json"]
 
 " Neoformat
 let g:neoformat_enabled_python = ['autopep8']
@@ -626,10 +590,7 @@ let g:neoformat_enabled_java = ['clang']
 nnoremap <Leader>cf :Neoformat<CR>
 vnoremap <Leader>cf :Neoformat<CR>
 " format line +-1
-" -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-"autocmd FileType c,cpp,objc,java,javascript nnoremap <Leader>cc :.-1,.+1Neoformat<CR>
-autocmd FileType c,cpp,objc,java nnoremap <Leader>cc :.-1,.+1Neoformat<CR>
-" -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+autocmd FileType c,cpp,objc,java,javascript nnoremap <Leader>cc :.-1,.+1Neoformat<CR>
 
 
 " markdown ctags
@@ -735,25 +696,8 @@ au CursorHold * checktime
 set tabpagemax=50 " max number of pages
 
 " colorscheme gruvbox
-" --------------------------------------------------------------------------------------------------------------------------------
-set background=dark
-colorscheme palenight
-let g:lightline = { 'colorscheme': 'palenight' }
-let g:airline_theme = "palenight"
-if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-if (has("termguicolors"))
-  set termguicolors
-endif
-" colorscheme gruvbox
-" let g:airline_theme='base16_eighties'
-" --------------------------------------------------------------------------------------------------------------------------------
+colorscheme gruvbox
+let g:airline_theme='base16_eighties'
 
 "plugins
 set runtimepath^=~/.nvim/bundle/ctrlp.vim
@@ -1170,6 +1114,9 @@ if isdirectory("build")
     nmap <leader>bf :call BuildCMakeProject("format", "build")<CR>
 endif
 
+
+
+" -----------------------------------------------------------------------------
 " error message formats - see :help errorformat
 let &efm = '\.\.\/%f:%l: FAILED:' . ','
 let &efm .= '%f:%l: FAILED:' . ','
