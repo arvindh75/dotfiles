@@ -11,23 +11,6 @@ else
     endif
 endif
 
-"----------------------------------------------------------------------------------------------------------------------------------------
-:set modifiable
-:set write
-" :verbose set modifiable
-" :autocmd BufNewFile *.txt :write
-autocmd VimEnter *.js 75VTerm 
-autocmd VimEnter *.js Term
-autocmd VimEnter *.js wincmd h
-autocmd VimEnter *.js NERDTree
-autocmd VimEnter *.js wincmd l
-autocmd VimEnter *.jsx 75VTerm 
-autocmd VimEnter *.jsx Term 
-autocmd VimEnter *.jsx wincmd h
-autocmd VimEnter *.jsx NERDTree
-autocmd VimEnter *.jsx wincmd l
-"----------------------------------------------------------------------------------------------------------------------------------------
-
 call plug#begin('~/.vim/bundle')
 
 " let Vundle manage Vundle, required
