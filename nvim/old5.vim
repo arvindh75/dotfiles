@@ -16,30 +16,16 @@ endif
 :set write
 " :verbose set modifiable
 " :autocmd BufNewFile *.txt :write
-
-" All files
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd l
-
-
-" JS + JSX files 
 autocmd VimEnter *.js 75VTerm 
 autocmd VimEnter *.js Term
 autocmd VimEnter *.js wincmd h
+autocmd VimEnter *.js NERDTree
+autocmd VimEnter *.js wincmd l
 autocmd VimEnter *.jsx 75VTerm 
 autocmd VimEnter *.jsx Term 
 autocmd VimEnter *.jsx wincmd h
-
-" Bash scripts
-autocmd VimEnter *.sh 75VTerm
-autocmd VimEnter *.sh wincmd h
-
-" C + CPP files
-autocmd VimEnter *.c 75VTerm
-autocmd VimEnter *.c wincmd h
-autocmd VimEnter *.cpp 75VTerm
-autocmd VimEnter *.cpp wincmd h
-
+autocmd VimEnter *.jsx NERDTree
+autocmd VimEnter *.jsx wincmd l
 "----------------------------------------------------------------------------------------------------------------------------------------
 
 call plug#begin('~/.vim/bundle')
