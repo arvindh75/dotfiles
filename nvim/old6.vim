@@ -12,19 +12,11 @@ else
 endif
 
 "----------------------------------------------------------------------------------------------------------------------------------------
-"MIGHT NEED TO DELETE LATER
-set foldmethod=marker
-
+:set modifiable
+:set write
 " :verbose set modifiable
 " :autocmd BufNewFile *.txt :write
-if has("autocmd")
-	augroup templates
-		autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh | :2 | startinsert
-		autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c | :5 | startinsert
-		autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | :10 | startinsert
-		autocmd BufNewFile *.tex 0r ~/.vim/templates/skeleton.tex | :8 | startinsert
-	augroup END
-endif
+
 " All files
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd l
@@ -171,8 +163,6 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vimlab/split-term.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'drewtempelmeyer/palenight.vim'
 let g:split_term_default_shell = "zsh"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
