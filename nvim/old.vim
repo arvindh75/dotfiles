@@ -180,6 +180,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+let NERDTreeShowHidden=1
 "-----------------------------------------------------------------------------------------------------------------------------
 " search with :Ack [options] {pattern] [{directories}]
 Plug 'mileszs/ack.vim'

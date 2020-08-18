@@ -177,10 +177,12 @@ Plug 'drewtempelmeyer/palenight.vim'
 let g:split_term_default_shell = "zsh"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 let NERDTreeShowHidden=1
+autocmd BufWritePre *.py execute ':Black'
 "-----------------------------------------------------------------------------------------------------------------------------
 " search with :Ack [options] {pattern] [{directories}]
 Plug 'mileszs/ack.vim'
@@ -634,7 +636,8 @@ augroup ClangFormatSettings
     "autocmd FileType c,cpp,objc,java,javascript map <buffer><Leader>c <Plug>(operator-clang-format)
     autocmd FileType c,cpp,objc,java map <buffer><Leader>c <Plug>(operator-clang-format)
 	" ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    autocmd FileType c,cpp syntax clear cppSTLconstant
+"    autocmd FileType c,cpp syntax clear cppSTLconstant
+    autocmd FileType cpp syntax clear cppSTLconstant
 
     autocmd FileType vimwiki nmap <leader>tts :TaskWikiMod +sprint<CR>
     autocmd FileType vimwiki nmap <leader>ttS :TaskWikiMod -sprint<CR>
