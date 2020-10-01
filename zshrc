@@ -110,6 +110,14 @@ source $ZSH/oh-my-zsh.sh
   alias discord="/usr/share/discord/Discord"
   alias fix_node="echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
   alias fix_wifi="sudo systemctl restart NetworkManager.service"
+  alias start_docker="sudo systemctl start docker"
+  alias stop_docker="sudo systemctl stop docker"
+  alias start_sqlservice="sudo systemctl enable mysql.service && systemctl start mysql.service"
+  alias mysql_docker_start="docker start 8834f84dc750"
+  alias mysql_docker="sudo mysql -h localhost -u root --port=5005 -p"
+  alias mysql_docker_dump="sudo mysqldump -h localhost -u root --port=5005 -p"
+  alias mysql="sudo mysql -u root -p"
+  alias mysql_dump="sudo mysqldump -u root -p"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
