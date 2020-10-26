@@ -6,8 +6,8 @@ if has('nvim')
     endif
 else
     if empty(glob('~/.vim/autoload/plug.vim'))
-     silent !wget -P ~/.vim/autoload/ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        silent !wget -P ~/.vim/autoload/ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 endif
 
@@ -18,12 +18,12 @@ set foldmethod=marker
 " :verbose set modifiable
 " :autocmd BufNewFile *.txt :write
 if has("autocmd")
-	augroup templates
-		autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh | :2 | startinsert
-		autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c | :5 | startinsert
-		autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | :10 | startinsert
-		autocmd BufNewFile *.tex 0r ~/.vim/templates/skeleton.tex | :8 | startinsert
-	augroup END
+    augroup templates
+        autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh | :2 | startinsert
+        autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c | :5 | startinsert
+        autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | :10 | startinsert
+        autocmd BufNewFile *.tex 0r ~/.vim/templates/skeleton.tex | :8 | startinsert
+    augroup END
 endif
 " All files
 autocmd VimEnter * NERDTree
@@ -47,6 +47,12 @@ autocmd VimEnter *.c 75VTerm
 autocmd VimEnter *.c wincmd h
 autocmd VimEnter *.cpp 75VTerm
 autocmd VimEnter *.cpp wincmd h
+
+" Python files
+autocmd VimEnter *.py 75VTerm
+autocmd VimEnter *.py wincmd h
+
+"autocmd VimEnter * IndentLinesEnable
 
 "----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -173,14 +179,24 @@ Plug 'vimlab/split-term.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+Plug 'Yggdroot/indentLine'
+Plug 'thaerkh/vim-indentguides'
+let g:indentguides_tabchar = '│'
+let g:indentguides_spacechar = '│'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'jiangmiao/auto-pairs'
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodeDefaultSymbol = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+"let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['nerdtree'] = ''
 let g:split_term_default_shell = "zsh"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+            \ 'do': 'yarn install',
+            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 let NERDTreeShowHidden=1
 autocmd BufWritePre *.py execute ':Black'
 "-----------------------------------------------------------------------------------------------------------------------------
@@ -231,8 +247,6 @@ Plug 'tpope/vim-eunuch'
 ":%DB mysql://root@localhost/bazquux
 Plug 'tpope/vim-db'
 
-Plug 'Yggdroot/indentLine'
-
 Plug 'skywind3000/asyncrun.vim'
 
 " New autocomplete
@@ -262,7 +276,6 @@ Plug 'kracejic/themeinabox.vim'
 
 " Bin
 " Plug 'itchyny/calendar.vim'
-" Plug 'Yggdroot/indentLine'
 
 
 
@@ -367,7 +380,7 @@ set fillchars+=vert:│         " nicer vert split separator
 set fillchars+=stlnc:-        " nicer separator for horizontal split
 
 if has('gui_running')
-  set guifont=Iosevka\ Term\ 12
+    set guifont=Iosevka\ Term\ 12
 endif
 
 "display whitespace
@@ -582,8 +595,8 @@ nnoremap <leader>8 :colorscheme gruvbox<cr>:AirlineTheme dark<cr>
 
 " get current syntax class
 nmap <leader>sy :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 
 "goto next file
@@ -618,25 +631,25 @@ command! XmlIndent :silent %!xmllint --encode UTF-8 --format -
 " default settings
 let g:clang_format#code_style = "llvm"
 let g:clang_format#style_options = {
-      \ "AllowShortFunctionsOnASingleLine": "Empty",
-      \ "AlwaysBreakTemplateDeclarations": "true",
-      \ "BreakBeforeBraces": "Allman",
-      \ "BreakConstructorInitializersBeforeComma": "true",
-      \ "IndentCaseLabels": "true",
-      \ "IndentWidth":     4,
-      \ "MaxEmptyLinesToKeep": 2,
-      \ "NamespaceIndentation": "Inner",
-      \ "ObjCBlockIndentWidth": 4,
-      \ "TabWidth": 4}
+            \ "AllowShortFunctionsOnASingleLine": "Empty",
+            \ "AlwaysBreakTemplateDeclarations": "true",
+            \ "BreakBeforeBraces": "Allman",
+            \ "BreakConstructorInitializersBeforeComma": "true",
+            \ "IndentCaseLabels": "true",
+            \ "IndentWidth":     4,
+            \ "MaxEmptyLinesToKeep": 2,
+            \ "NamespaceIndentation": "Inner",
+            \ "ObjCBlockIndentWidth": 4,
+            \ "TabWidth": 4}
 
 augroup ClangFormatSettings
     autocmd!
     " if you install vim-operator-user
-	" ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    " ----------------------------------------------------------------------------------------------------------------------------------------------------------------
     "autocmd FileType c,cpp,objc,java,javascript map <buffer><Leader>c <Plug>(operator-clang-format)
     autocmd FileType c,cpp,objc,java map <buffer><Leader>c <Plug>(operator-clang-format)
-	" ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-"    autocmd FileType c,cpp syntax clear cppSTLconstant
+    " ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    "    autocmd FileType c,cpp syntax clear cppSTLconstant
     autocmd FileType cpp syntax clear cppSTLconstant
 
     autocmd FileType vimwiki nmap <leader>tts :TaskWikiMod +sprint<CR>
@@ -663,9 +676,9 @@ let g:indentLine_conceallevel = 2
 " Neoformat
 let g:neoformat_enabled_python = ['autopep8']
 let g:neoformat_java_clang = {
-        \ 'exe': 'clang-format',
-        \ 'stdin': 1,
-        \ }
+            \ 'exe': 'clang-format',
+            \ 'stdin': 1,
+            \ }
 let g:neoformat_enabled_java = ['clang']
 
 nnoremap <Leader>cf :Neoformat<CR>
@@ -679,21 +692,21 @@ autocmd FileType c,cpp,objc,java nnoremap <Leader>cc :.-1,.+1Neoformat<CR>
 
 " markdown ctags
 let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'vimwiki',
-    \ 'kinds' : [
-        \ 'h:Heading_L1',
-        \ 'i:Heading_L2',
-        \ 'k:Heading_L3'
-    \ ]
-\ }
+            \ 'ctagstype' : 'vimwiki',
+            \ 'kinds' : [
+            \ 'h:Heading_L1',
+            \ 'i:Heading_L2',
+            \ 'k:Heading_L3'
+            \ ]
+            \ }
 let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds' : [
-        \ 'h:Heading_L1',
-        \ 'i:Heading_L2',
-        \ 'k:Heading_L3'
-    \ ]
-\ }
+            \ 'ctagstype' : 'markdown',
+            \ 'kinds' : [
+            \ 'h:Heading_L1',
+            \ 'i:Heading_L2',
+            \ 'k:Heading_L3'
+            \ ]
+            \ }
 
 
 augroup filetypedetect
@@ -786,15 +799,15 @@ colorscheme palenight
 let g:lightline = { 'colorscheme': 'palenight' }
 let g:airline_theme = "palenight"
 if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
 "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
 " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
 if (has("termguicolors"))
-  set termguicolors
+    set termguicolors
 endif
 " colorscheme gruvbox
 " let g:airline_theme='base16_eighties'
@@ -885,24 +898,24 @@ augroup lsp_install
 augroup END
 
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
+            \ 'name': 'file',
+            \ 'whitelist': ['*'],
+            \ 'priority': 10,
+            \ 'completor': function('asyncomplete#sources#file#completor')
+            \ }))
 
 
 set showtabline:0
 " airline
 
 let g:airline#extensions#default#section_truncate_width = {
-  \ 'b': 79,
-  \ 'x': 60,
-  \ 'y': 88,
-  \ 'z': 60,
-  \ 'warning': 80,
-  \ 'error': 80,
-  \ }
+            \ 'b': 79,
+            \ 'x': 60,
+            \ 'y': 88,
+            \ 'z': 60,
+            \ 'warning': 80,
+            \ 'error': 80,
+            \ }
 let w:airline_skip_empty_sections = 1
 " let g:airline_section_b=' %{fugitive#head()}'
 let g:airline#extensions#hunks#enabled = 0
@@ -1031,22 +1044,22 @@ xnoremap gs y:%s/<C-r>"//g<Left><Left>
 " Type z/ to toggle highlighting on/off.
 nnoremap <leader>z :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    augroup end
-    setl updatetime=500
-    echo 'Highlight current word: ON'
-    return 1
-  endif
+    let @/ = ''
+    if exists('#auto_highlight')
+        au! auto_highlight
+        augroup! auto_highlight
+        setl updatetime=4000
+        echo 'Highlight current word: off'
+        return 0
+    else
+        augroup auto_highlight
+            au!
+            au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+        augroup end
+        setl updatetime=500
+        echo 'Highlight current word: ON'
+        return 1
+    endif
 endfunction
 
 " -----------------------------------------------------------------------------
@@ -1056,20 +1069,20 @@ vnoremap // y/<C-R>"<CR>
 " -----------------------------------------------------------------------------
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+            \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+            \gvy/<C-R><C-R>=substitute(
+            \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+            \gV:call setreg('"', old_reg, old_regtype)<CR>
 vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+            \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+            \gvy?<C-R><C-R>=substitute(
+            \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+            \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " -----------------------------------------------------------------------------
 " select ag as :Ack search when available
 if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
+    let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
 nnoremap <leader>ag "zyiw:Ag <C-r>z<CR>
@@ -1092,35 +1105,35 @@ command! Ctpdiff2 :!cleartool diff -pre -ser % | less
 " -----------------------------------------------------------------------------
 " Fix autocompletions
 function! g:UltiSnips_Complete()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-n>"
-    else
-      call UltiSnips#JumpForwards()
-      if g:ulti_jump_forwards_res == 0
-        return "\<TAB>"
-      endif
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+                return "\<TAB>"
+            endif
+        endif
     endif
-  endif
-  return ""
+    return ""
 endfunction
 
 function! g:UltiSnips_Reverse()
-  call UltiSnips#JumpBackwards()
-  if g:ulti_jump_backwards_res == 0
-    return "\<C-P>"
-  endif
+    call UltiSnips#JumpBackwards()
+    if g:ulti_jump_backwards_res == 0
+        return "\<C-P>"
+    endif
 
-  return ""
+    return ""
 endfunction
 
 if !exists("g:UltiSnipsJumpForwardTrigger")
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    let g:UltiSnipsJumpForwardTrigger = "<tab>"
 endif
 
 if !exists("g:UltiSnipsJumpBackwardTrigger")
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 endif
 
 au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
@@ -1133,8 +1146,8 @@ inoremap <silent><C-X><C-U> <C-R>=g:UltiSnips_Complete()<CR>
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
 function! ExecuteMacroOverVisualRange()
-  echo "@".getcmdline()
-  execute ":'<,'>normal @".nr2char(getchar())
+    echo "@".getcmdline()
+    execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
 " -----------------------------------------------------------------------------
@@ -1168,8 +1181,8 @@ endif
 " :echo g:S
 let g:S = 0  "result in global variable S
 function! Sum(number)
-  let g:S = g:S + a:number
-  return a:number
+    let g:S = g:S + a:number
+    return a:number
 endfunction
 
 " -----------------------------------------------------------------------------
