@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
   alias c="clear"
   alias matlab="cd /usr/local/MATLAB/R2020a/bin/ && ./matlab && cd ~"
-  alias spotify_ad="bash ~/Desktop/Spotify-Ad-block/daemon/daemon_final.sh"
+  alias spotify_ad="bash ~/Spotify-Ad-block/daemon/daemon_final.sh"
   alias discord="/usr/share/discord/Discord"
   alias fix_node="echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
   alias fix_wifi="sudo systemctl restart NetworkManager.service"
@@ -118,8 +118,10 @@ source $ZSH/oh-my-zsh.sh
   alias mysql_docker_dump="sudo mysqldump -h localhost -u root --port=5005 -p"
   alias mysql="sudo mysql -u root -p"
   alias mysql_dump="sudo mysqldump -u root -p"
+  alias spotify_run="spotify&;spotify_ad"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export LC_ALL=en_US.UTF-8
