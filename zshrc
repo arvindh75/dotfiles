@@ -5,6 +5,24 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export FZF_DEFAULT_OPTS="
+--info=inline
+--height=80%
+--multi
+--preview-window=:hidden
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--color='pointer:032,marker:010'
+--prompt='∼ ' --pointer='▶' --marker='✓'
+--bind '?:toggle-preview'
+--bind 'ctrl-a:select-all'
+--bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+--bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+--bind 'ctrl-v:execute(code {+})'
+"
+# --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+# --layout=reverse
+# export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*'"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -118,10 +136,11 @@ source $ZSH/oh-my-zsh.sh
   alias mysql_docker_dump="sudo mysqldump -h localhost -u root --port=5005 -p"
   alias mysql="sudo mysql -u root -p"
   alias mysql_dump="sudo mysqldump -u root -p"
-  alias spotify_run="spotify&;spotify_ad"
+  alias spotify_run="spotify&;sleep 5;spotify_ad"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export LC_ALL=en_US.UTF-8
