@@ -93,9 +93,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git thefuck)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
 
 # User configuration
 
@@ -124,7 +125,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
   alias c="clear"
   alias matlab="cd /usr/local/MATLAB/R2020a/bin/ && ./matlab && cd ~"
-  alias spotify_ad="bash ~/Spotify-Ad-block/daemon/daemon_final.sh"
+  alias spotify_ad="bash ~/Spotify-Ad-block/daemon_final.sh"
   alias discord="/usr/share/discord/Discord"
   alias fix_node="echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
   alias fix_wifi="sudo systemctl restart NetworkManager.service"
@@ -137,10 +138,18 @@ source $ZSH/oh-my-zsh.sh
   alias mysql="sudo mysql -u root -p"
   alias mysql_dump="sudo mysqldump -u root -p"
   alias spotify_run="spotify&;sleep 5;spotify_ad"
+  alias lc='colorls -lA --sd'
+  alias cls="colorls"
+
+function pasters() {
+    local file=${1:-/dev/stdin}
+    curl --data-binary @${file} https://paste.rs
+}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+export PATH="/home/arvindh/.gem/ruby/2.7.0/bin:$PATH"
+source $(dirname $(gem which colorls))/tab_complete.sh
 export LC_ALL=en_US.UTF-8
