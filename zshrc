@@ -138,8 +138,9 @@ source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
   alias mysql="sudo mysql -u root -p"
   alias mysql_dump="sudo mysqldump -u root -p"
   alias spotify_run="spotify&;sleep 5;spotify_ad"
-  alias lc='colorls -lA --sd'
+  alias lc="colorls -lA --sd"
   alias cls="colorls"
+  alias sc="shellcheck"
 
 function pasters() {
     local file=${1:-/dev/stdin}
