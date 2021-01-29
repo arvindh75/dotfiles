@@ -14,14 +14,14 @@ endif
 "----------------------------------------------------------------------------------------------------------------------------------------
 "MIGHT NEED TO DELETE LATER
 set foldmethod=marker
-
+set rtp+=pathofIndentLine
 " :verbose set modifiable
 " :autocmd BufNewFile *.txt :write
 if has("autocmd")
     augroup templates
         autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh | :2 | startinsert
         autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c | :5 | startinsert
-        autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | :10 | startinsert
+        autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | :19 | startinsert
         autocmd BufNewFile *.tex 0r ~/.vim/templates/skeleton.tex | :8 | startinsert
     augroup END
 endif
@@ -181,6 +181,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'thaerkh/vim-indentguides'
+Plug 'rhysd/git-messenger.vim'
 let g:indentguides_tabchar = '│'
 let g:indentguides_spacechar = '│'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -193,12 +194,21 @@ Plug 'jiangmiao/auto-pairs'
 let g:split_term_default_shell = "zsh"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'prettier/vim-prettier', {
             \ 'do': 'yarn install',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 let NERDTreeShowHidden=1
 autocmd BufWritePre *.py execute ':Black'
+Plug 'justinmk/vim-sneak'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'rakr/vim-one'
+Plug 'wadackel/vim-dogrun'
 "-----------------------------------------------------------------------------------------------------------------------------
 " search with :Ack [options] {pattern] [{directories}]
 Plug 'mileszs/ack.vim'
@@ -585,13 +595,16 @@ command Qff :cclose 20<CR>
 " Theme stuff
 "let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
-nnoremap <leader>1 :colorscheme railscasts<cr>:AirlineTheme dark<cr>
+nnoremap <leader>0 :colorscheme palenight<cr>:AirlineTheme palenight<cr>
+nnoremap <leader>1 :colorscheme one<cr>:AirlineTheme one<cr>
 nnoremap <leader>2 :colorscheme molokai<cr>:AirlineTheme base16_monokai<cr>
-nnoremap <leader>3 :colorscheme themeinabox<cr>:AirlineTheme base16_eighties<cr>
-nnoremap <leader>4 :colorscheme themeinabox-light<cr>:AirlineTheme sol<cr>
+nnoremap <leader>3 :colorscheme purify<cr>:AirlineTheme purify<cr>
+nnoremap <leader>4 :colorscheme onehalfdark<cr>:AirlineTheme onehalfdark<cr>
 nnoremap <leader>5 :colorscheme themeinabox-transparent<cr>:AirlineTheme base16_eighties<cr>
-nnoremap <leader>6 :colorscheme themeinabox-blue<cr>:AirlineTheme base16_grayscale<cr>
+nnoremap <leader>6 :colorscheme dogrun<cr>:AirlineTheme palenight<cr>
+nnoremap <leader>7 :colorscheme dracula<cr>:AirlineTheme dracula<cr>
 nnoremap <leader>8 :colorscheme gruvbox<cr>:AirlineTheme dark<cr>
+nnoremap <leader>9 :colorscheme nord<cr>:AirlineTheme nord<cr>
 
 " get current syntax class
 nmap <leader>sy :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -931,7 +944,7 @@ elseif hostname() =~ "chirm"
 else
     let g:airline_powerline_fonts = 1
 endif
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 " autocmd VimEnter * set showtabline=0
