@@ -209,6 +209,9 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'rakr/vim-one'
 Plug 'wadackel/vim-dogrun'
+Plug 'v15hv4/vim1s'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 "-----------------------------------------------------------------------------------------------------------------------------
 " search with :Ack [options] {pattern] [{directories}]
 Plug 'mileszs/ack.vim'

@@ -4,7 +4,6 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
 export FZF_DEFAULT_OPTS="
 --info=inline
 --height=80%
@@ -141,10 +140,17 @@ source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
   alias lc="colorls -lA --sd"
   alias cls="colorls"
   alias sc="shellcheck"
+  alias qr="~/ioccc/2014/endoh1/qr"
+  alias moodle_upcoming="python ~/moodle_up/moodle2.py upcoming"
 
 function pasters() {
     local file=${1:-/dev/stdin}
     curl --data-binary @${file} https://paste.rs
+}
+
+function fileio() {
+    local file=${1:-/dev/stdin}
+    curl -F "file=@${file}" https://file.io/\?expires=\1d
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -154,3 +160,8 @@ function pasters() {
 export PATH="/home/arvindh/.gem/ruby/2.7.0/bin:$PATH"
 source $(dirname $(gem which colorls))/tab_complete.sh
 export LC_ALL=en_US.UTF-8
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
