@@ -212,6 +212,7 @@ Plug 'wadackel/vim-dogrun'
 Plug 'v15hv4/vim1s'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
+Plug 'junegunn/goyo.vim'
 "-----------------------------------------------------------------------------------------------------------------------------
 " search with :Ack [options] {pattern] [{directories}]
 Plug 'mileszs/ack.vim'
@@ -296,7 +297,7 @@ Plug 'kracejic/themeinabox.vim'
 " All of your Plugins must be added before the following line
 call plug#end()
 
-"set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 "nnoremap <C-y> "+y
 "vnoremap <C-y> "+y
 "nnoremap <C-p> "+gP
