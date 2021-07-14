@@ -21,7 +21,7 @@ if has("autocmd")
     augroup templates
         autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh | :2 | startinsert
         autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c | :5 | startinsert
-        autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | :19 | startinsert
+        autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | :28 | startinsert
         autocmd BufNewFile *.tex 0r ~/.vim/templates/skeleton.tex | :8 | startinsert
     augroup END
 endif
@@ -53,7 +53,7 @@ autocmd VimEnter *.py 75VTerm
 autocmd VimEnter *.py wincmd h
 
 "autocmd VimEnter * IndentLinesEnable
-
+command! JsonB :%!python -m json.tool
 "----------------------------------------------------------------------------------------------------------------------------------------
 
 call plug#begin('~/.vim/bundle')
@@ -213,6 +213,7 @@ Plug 'v15hv4/vim1s'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 Plug 'junegunn/goyo.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 "-----------------------------------------------------------------------------------------------------------------------------
 " search with :Ack [options] {pattern] [{directories}]
 Plug 'mileszs/ack.vim'

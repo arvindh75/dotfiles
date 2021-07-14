@@ -124,7 +124,7 @@ source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
   alias c="clear"
   alias matlab="cd /usr/local/MATLAB/R2020a/bin/ && ./matlab && cd ~"
-  alias spotify_ad="bash ~/Spotify-Ad-block/daemon_final.sh"
+  alias spotify_ad="bash ~/scripts/spotify_ad.sh"
   alias discord="/usr/share/discord/Discord"
   alias fix_node="echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
   alias fix_wifi="sudo systemctl restart NetworkManager.service"
@@ -142,6 +142,14 @@ source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
   alias sc="shellcheck"
   alias qr="~/ioccc/2014/endoh1/qr"
   alias moodle_upcoming="python ~/moodle_up/moodle2.py upcoming"
+  alias wifi_speed="speedometer -r wlp0s20f3"
+  alias wifi_connect="bash ~/scripts/wifi_connect.sh"
+  alias rand_pass="apg -qlt -c /dev/urandom -n 1 -m 4 | ccze -A -c default=\$(printf 'red\ngreen\nyellow\nblue\nmagenta\ncyan' | sort -R | head -n1)"
+  alias moss="~/scripts/moss"
+  alias popcat="curl popcatlive.herokuapp.com"
+  alias party_parrot="curl parrot.live"
+  alias iiith_up="nmcli con up 6074415e-6d78-4688-8190-e7ca41b1b32c"
+  alias iiith_down="nmcli con down 6074415e-6d78-4688-8190-e7ca41b1b32c"
 
 function pasters() {
     local file=${1:-/dev/stdin}
@@ -165,3 +173,10 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+#Android
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
