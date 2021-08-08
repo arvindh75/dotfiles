@@ -4,6 +4,13 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+cur_desktop=`xdotool get_desktop`
+if [[ "${cur_desktop}" == "1" ]]
+then
+    cat ~/scripts/ssh_art.txt
+fi
+
 export FZF_DEFAULT_OPTS="
 --info=inline
 --height=80%
@@ -150,6 +157,13 @@ source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
   alias party_parrot="curl parrot.live"
   alias iiith_up="nmcli con up 6074415e-6d78-4688-8190-e7ca41b1b32c"
   alias iiith_down="nmcli con down 6074415e-6d78-4688-8190-e7ca41b1b32c"
+  alias mongo_up="sudo systemctl start mongodb"
+  alias mongo_status="sudo systemctl status mongodb"
+  alias mongo_down="sudo systemctl stop mongodb"
+  alias colab="google-chrome-stable --app=https://colab.research.google.com/"
+  alias mouse_wake="sudo sh -c 'echo XHC > /proc/acpi/wakeup' && grep XHC /proc/acpi/wakeup | awk -v N=3 '{print $3}'"
+  alias ssh_art="cat ~/scripts/ssh_art.txt"
+  alias ssh_thanos="sudo route add 192.168.29.35 dev vpn && ssh ashwins@192.168.29.35"
 
 function pasters() {
     local file=${1:-/dev/stdin}
@@ -180,3 +194,5 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export SPICETIFY_INSTALL="/home/arvindh/spicetify-cli"
+export PATH="$SPICETIFY_INSTALL:$PATH"
