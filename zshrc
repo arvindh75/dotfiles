@@ -126,6 +126,8 @@ source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+BROWSER_APP="brave"
+# BROWSER_APP="google-chrome-stable"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -160,10 +162,14 @@ source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
   alias mongo_up="sudo systemctl start mongodb"
   alias mongo_status="sudo systemctl status mongodb"
   alias mongo_down="sudo systemctl stop mongodb"
-  alias colab="google-chrome-stable --app=https://colab.research.google.com/"
+  alias colab="${BROWSER_APP} --app=https://colab.research.google.com/"
+  alias gdocs="${BROWSER_APP} --app=https://docs.google.com/"
+  alias gcalendar="${BROWSER_APP} --app=https://calendar.google.com/"
+  alias gdrive="${BROWSER_APP} --app=https://drive.google.com/"
+  alias gmeet="${BROWSER_APP} --app=https://meet.google.com/"
   alias mouse_wake="sudo sh -c 'echo XHC > /proc/acpi/wakeup' && grep XHC /proc/acpi/wakeup | awk -v N=3 '{print $3}'"
   alias ssh_art="cat ~/scripts/ssh_art.txt"
-  alias ssh_thanos="sudo route add 192.168.29.35 dev vpn && ssh ashwins@192.168.29.35"
+  alias ssh_thanos="nmcli connection modify vpn ipv4.never-default true && sudo route add 192.168.29.35 dev vpn && ssh ashwins@192.168.29.35"
 
 function pasters() {
     local file=${1:-/dev/stdin}
@@ -189,10 +195,27 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 #Android
-export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/.android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export SPICETIFY_INSTALL="/home/arvindh/spicetify-cli"
 export PATH="$SPICETIFY_INSTALL:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/arvindh/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/arvindh/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/arvindh/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/arvindh/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+BROWSER=/usr/bin/brave
+export PATH=$HOME/.config/rofi/bin:$PATH
