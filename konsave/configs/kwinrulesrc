@@ -1,0 +1,40 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum
+
+[1]
+Description=Application settings for wihotspot-gui
+desktop=2
+desktoprule=2
+ignoregeometry=true
+ignoregeometryrule=2
+position=639,371
+positionrule=3
+wmclass=wihotspot-gui wihotspot-gui
+wmclasscomplete=true
+wmclassmatch=1
+
+[2]
+Description=Application settings for telegramdesktop
+desktop=3
+desktoprule=2
+wmclass=telegram-desktop telegramdesktop
+wmclasscomplete=true
+wmclassmatch=1
+
+[3]
+Description=Application settings for spotify
+desktop=4
+desktoprule=2
+fullscreen=true
+fullscreenrule=2
+maxsize=960,1080
+maxsizerule=1
+minsize=960,1080
+minsizerule=1
+size=960,1080
+sizerule=1
+wmclass=spotify
+wmclassmatch=1
+
+[General]
+count=3

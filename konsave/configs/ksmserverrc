@@ -1,0 +1,37 @@
+[$Version]
+update_info=ksmserver_update_loginMode_value.upd:ksmserver_update_loginMode_value_default_enum
+
+[LegacySession: saved at previous logout]
+count=0
+
+[Session: saved at previous logout]
+clientId1=101aa1a9145ff000160460373600000013140005
+clientId2=101aa1a9145ff000163151101300000010760006
+clientId3=101aa1a9145ff000161849231300000010380023
+clientId4=101aa1a9145ff000163349685700000010920008
+clientId5=101aa1a9145ff000163349686200000010920010
+count=5
+discardCommand3[$e]=rm,$HOME/.config/session/yakuake_101aa1a9145ff000161849231300000010380023_1633502164_534884
+program1=/usr/bin/pamac-tray-plasma
+program2=/usr/bin/msm_kde_notifier
+program3=/usr/bin/yakuake
+program4=/usr/bin/flameshot
+program5=pulseaudio
+restartCommand1=/usr/bin/pamac-tray-plasma,-session,101aa1a9145ff000160460373600000013140005_1633502164_534842
+restartCommand2=/usr/bin/msm_kde_notifier,-session,101aa1a9145ff000163151101300000010760006_1633502164_534844
+restartCommand3=/usr/bin/yakuake,-session,101aa1a9145ff000161849231300000010380023_1633502164_534884
+restartCommand4=/usr/bin/flameshot,-session,101aa1a9145ff000163349685700000010920008_1633502164_534866
+restartCommand5=
+restartStyleHint1=0
+restartStyleHint2=0
+restartStyleHint3=0
+restartStyleHint4=0
+restartStyleHint5=0
+userId1=arvindh
+userId2=arvindh
+userId3=arvindh
+userId4=arvindh
+userId5=arvindh
+
+[SubSession: c8761fd6-4a53-41dd-82cd-7a5acdf720cf]
+count=0
