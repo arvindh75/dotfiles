@@ -14,6 +14,7 @@ additional_plugins = {
   -- "mhartington/formatter.nvim",
 
   -- { crispgm/nvim-go", ft = "go" },
+  'iamcco/markdown-preview.nvim',
 }
 
 -- Other settings here

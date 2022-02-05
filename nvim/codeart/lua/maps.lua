@@ -61,7 +61,7 @@ map('n', '<leader>ps', ':PackerSync<CR>')
 map('n', '<leader>pc', ':PackerCompile<CR>')
 
 -- NvimTree toggle
-map("n", "nt", ":NvimTreeToggle<CR>")
+map("n", "tn", ":NvimTreeToggle<CR>")
 
 
 -- Telescope
