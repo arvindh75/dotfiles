@@ -132,3 +132,5 @@ endif
 ]]
 
 vim.cmd("command CodeArtTransparent lua make_codeart_transparent()")
+vim.cmd("call timer_start(100, { -> execute( 'NvimTreeOpen') })")
+vim.cmd("call timer_start(1000, { -> execute( 'wincmd l') })")

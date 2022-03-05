@@ -22,6 +22,7 @@ nvimtree.setup {
   auto_close = false,
   open_on_tab = false,
   update_cwd = true,
+  open_on_setup = true,
   update_to_buf_dir = {
     enable = true,
     auto_open = true,
